@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#100b1b">
+    <meta name="description" content="A heartfelt tribute to Ayesha from her cousins Ahmad, Aqeel and Ayyan.">
+    <title>For Ayesha — A Tribute from Ahmad, Aqeel & Ayyan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.03)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .verse-line {
+            transition: all 0.4s ease;
+        }
+        .verse-line:hover {
+            transform: scale(1.02);
+            color: #fbcfe8;
+        }
+
+        body { background:#100b1b; background-image:radial-gradient(ellipse at 12% 8%,rgba(236,72,153,.16),transparent 38%),radial-gradient(ellipse at 88% 30%,rgba(139,92,246,.14),transparent 36%); background-attachment:fixed; }
+        html { scroll-behavior:smooth; }
+        .glass-card { border-color:rgba(255,255,255,.13); box-shadow:0 18px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06); }
+        header.glass-card { position:relative; overflow:hidden; }
+        header.glass-card::after { content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent); }
+        button,[onclick] { -webkit-tap-highlight-color:transparent; }
+        button:focus-visible,[onclick]:focus-visible { outline:2px solid #f9a8d4;outline-offset:3px; }
+        .verse-line { border-radius:14px; }
+        .verse-line:hover { background:rgba(244,114,182,.10);border-color:rgba(244,114,182,.24);transform:translateX(3px); }
+        .theme-btn { white-space:nowrap; }
+        .soft-divider { height:1px;background:linear-gradient(90deg,transparent,rgba(249,168,212,.5),transparent); }
+        .promise-card { background:linear-gradient(135deg,rgba(244,114,182,.13),rgba(139,92,246,.12),rgba(255,255,255,.035));border:1px solid rgba(249,168,212,.2); }
+        #backToTop { position:fixed;right:18px;bottom:18px;z-index:40;width:44px;height:44px;border-radius:15px;background:rgba(190,24,93,.78);color:white;border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 25px rgba(0,0,0,.25);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transform:translateY(8px);transition:.25s ease; }
+        #backToTop.visible { opacity:1;pointer-events:auto;transform:translateY(0); }
+        @media(max-width:640px) { .theme-btn{padding-left:8px!important;padding-right:8px!important;font-size:10px!important} header.glass-card{padding:16px}.verse-line{gap:10px;padding:11px}.verse-line p{font-size:17px}#toastContainer{left:12px;right:12px;bottom:72px}#toastContainer>div{width:100%} }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important} }
+
+
+        /* Extra celebration details */
+        .petal { position: fixed; top: -40px; z-index: 2; pointer-events: none; opacity: .75; animation: petalFall linear infinite; filter: drop-shadow(0 0 7px rgba(255,180,220,.35)); }
+        @keyframes petalFall { 0% { transform: translate3d(0,-5vh,0) rotate(0deg); } 100% { transform: translate3d(70px,110vh,0) rotate(540deg); } }
+        .gift-overlay { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 22px; background: radial-gradient(circle at 50% 35%, rgba(108,45,115,.94), rgba(12,7,24,.98) 68%); transition: opacity .7s ease, visibility .7s ease; }
+        .gift-overlay.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
+        .gift-box { font-size: clamp(6rem, 22vw, 10rem); display: inline-block; filter: drop-shadow(0 12px 30px rgba(244,114,182,.4)); animation: giftBounce 1.8s ease-in-out infinite; }
+        @keyframes giftBounce { 0%,100% { transform: translateY(0) rotate(-2deg) scale(1); } 50% { transform: translateY(-12px) rotate(2deg) scale(1.04); } }
+        .photo-frame { border: 1px solid rgba(255,255,255,.2); background: linear-gradient(145deg,rgba(244,114,182,.13),rgba(168,85,247,.12)); }
+        .photo-preview { width: 100%; max-height: 420px; object-fit: cover; border-radius: 1.25rem; }
+        @media (prefers-reduced-motion: reduce) { .petal, .gift-box { animation: none !important; } * { scroll-behavior: auto !important; } }
+    </style>
+</head>
+<body class="h-full text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-pink-500 selection:text-white">
+    <div class="gift-overlay" id="giftOverlay" role="dialog" aria-label="A surprise for Ayesha">
+        <div class="text-center max-w-lg">
+            <div class="text-pink-200 text-xs sm:text-sm uppercase tracking-[.3em] mb-5">A little surprise, made with love</div>
+            <div class="gift-box" aria-hidden="true">🎁</div>
+            <h2 class="font-serif text-4xl sm:text-6xl font-bold mt-3 mb-4">For Ayesha</h2>
+            <p class="text-pink-100/90 mb-7 leading-relaxed">A special little world, made just for you by Ahmad, Aqeel &amp; Ayyan.</p>
+            <button onclick="openGift()" class="px-7 py-3 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 transition-transform font-semibold shadow-xl shadow-pink-900/40">Open Your Surprise ✨</button>
+            <p class="text-white/50 text-xs mt-4">Tap to begin</p>
+        </div>
+    </div>
+
+    <!-- Magical Particle & Aurora Canvas Background -->
+    <canvas id="magicalCanvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col justify-between p-4 sm:p-6 md:p-10 max-w-6xl mx-auto z-10 relative">
+
+        <!-- Top Navigation / Header Controls -->
+        <header class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 glass-card rounded-3xl p-5 sm:p-6">
+            <div class="flex items-center gap-3.5 text-center sm:text-left">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center shadow-lg shadow-pink-500/30 animate-float">
+                    <i class="fa-solid fa-heart text-2xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-2xl sm:text-3xl tracking-wide bg-gradient-to-r from-white via-pink-200 to-rose-300 bg-clip-text text-transparent">For Ayesha</h1>
+                    <p class="text-xs sm:text-sm text-pink-200/80 font-medium">From Your Loving Cousins: Ahmad, Aqeel & Ayyan</p>
+                </div>
+            </div>
+
+            <!-- Theme Switcher & Ambient Music Controls -->
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+                <div class="flex items-center gap-1 bg-black/25 p-1 rounded-2xl border border-white/10">
+                    <button onclick="setTheme('midnight')" id="btn-midnight" class="theme-btn px-3 py-1.5 text-xs font-semibold rounded-xl transition-all bg-pink-600 text-white shadow-sm">Midnight Starlight</button>
+                    <button onclick="setTheme('rosegold')" id="btn-rosegold" class="theme-btn px-3 py-1.5 text-xs font-semibold rounded-xl transition-all text-pink-200 hover:text-white">Rose Gold</button>
+                    <button onclick="setTheme('emerald')" id="btn-emerald" class="theme-btn px-3 py-1.5 text-xs font-semibold rounded-xl transition-all text-pink-200 hover:text-white">Emerald Forest</button>
+                </div>
+
+                <button onclick="toggleAmbientSound()" id="soundToggleBtn" class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-pink-600/30 hover:bg-pink-600/50 border border-pink-400/30 text-xs font-semibold transition-all shadow-lg shadow-pink-900/20">
+                    <i id="soundIcon" class="fa-solid fa-music"></i>
+                    <span id="soundText">Play Melody</span>
+                </button>
+                <div class="flex items-center gap-2 text-xs text-pink-100/80" title="Melody volume">
+                    <i class="fa-solid fa-volume-low"></i>
+                    <input aria-label="Melody volume" id="musicVolume" type="range" min="0" max="100" value="35" oninput="setMusicVolume(this.value)" class="w-20 accent-pink-500">
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Greeting Card -->
+        <section class="glass-card rounded-3xl p-8 sm:p-12 mb-10 text-center relative overflow-hidden group">
+            <div class="absolute -right-16 -top-16 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-pink-500/30 transition-all"></div>
+            <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/30 transition-all"></div>
+            
+            <span class="inline-block px-4 py-1.5 rounded-full bg-pink-500/20 border border-pink-500/30 text-pink-200 text-xs font-semibold tracking-wider uppercase mb-4 shadow-inner">Dedicated With All Our Hearts</span>
+            <h2 class="font-serif font-extrabold text-4xl sm:text-6xl text-white mb-6 leading-tight">To Our Dearest Ayesha</h2>
+            <p class="font-serif italic text-lg sm:text-2xl text-pink-100 max-w-3xl mx-auto leading-relaxed mb-8">
+                "A sister of the heart, a guiding light of joy, and the most cherished blessing in our family."
+            </p>
+            <div class="flex items-center justify-center gap-6 text-sm font-medium text-pink-200/90 border-t border-white/10 pt-6 max-w-md mx-auto">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-feather text-pink-400"></i> Ahmad</span>
+                <span class="text-pink-400">•</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-feather text-pink-400"></i> Aqeel</span>
+                <span class="text-pink-400">•</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-feather text-pink-400"></i> Ayyan</span>
+            </div>
+        </section>
+
+        <!-- Ayesha Photo Memory: choose a photo on this device -->
+        <section class="glass-card rounded-3xl p-6 sm:p-8 mb-10 text-center">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-pink-500/20 text-pink-300 border border-pink-400/20 mb-3"><i class="fa-solid fa-camera-retro text-xl"></i></div>
+            <h3 class="font-serif font-bold text-2xl text-white mb-2">Ayesha's Special Memory</h3>
+            <p class="text-sm text-pink-100/75 max-w-xl mx-auto mb-5">Add a favourite photo from your phone to make this page even more personal. The photo preview stays on this device and is not uploaded by this page.</p>
+            <div class="photo-frame rounded-2xl p-3 max-w-xl mx-auto">
+                <div id="photoPlaceholder" class="py-10 px-4"><div class="text-5xl mb-3">🌷</div><p class="text-pink-100/80 text-sm">Your lovely memory will appear here</p></div>
+                <img id="ayeshaPhotoPreview" class="photo-preview hidden" alt="Ayesha photo preview">
+            </div>
+            <label for="ayeshaPhotoInput" class="inline-flex items-center gap-2 mt-4 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 cursor-pointer text-sm font-semibold"><i class="fa-solid fa-image"></i> Choose Ayesha's Photo</label>
+            <input id="ayeshaPhotoInput" type="file" accept="image/*" class="hidden" onchange="previewAyeshaPhoto(event)">
+            <p class="text-xs text-white/45 mt-2">You can change the photo any time.</p>
+        </section>
+
+        <!-- Main Content Grid -->
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+
+            <!-- LEFT 2 COLUMNS: The 28 Heartfelt Poetic Lines (Manuscript View) -->
+            <section class="glass-card rounded-3xl p-6 sm:p-8 lg:col-span-2 flex flex-col justify-between relative overflow-hidden">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-300 border border-pink-500/30">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-white">Our Poetic Tribute</h3>
+                            <p class="text-xs text-pink-200/70">28 lines written straight from our hearts to yours</p>
+                        </div>
+                    </div>
+                    <span class="text-xs px-3 py-1 rounded-full bg-white/10 text-pink-200 font-mono">Verse 1-28</span>
+                </div>
+
+                <!-- Scrollable Verses Container -->
+                <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2 text-slate-200 font-serif text-lg leading-relaxed">
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">01</span>
+                        <p>To our dearest Ayesha, the brightest light in our family tree,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">02</span>
+                        <p>Whose laughter echoes through our fondest childhood memories.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">03</span>
+                        <p>From rooftop games and silly secrets shared under summer skies,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">04</span>
+                        <p>To growing up together and watching each other rise.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">05</span>
+                        <p>You have always been more than a cousin, a sister of the heart,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">06</span>
+                        <p>Whose kindness leaves a golden glow wherever you depart.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">07</span>
+                        <p>Ahmad remembers your brilliant wit in every playful debate,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">08</span>
+                        <p>Aqeel treasures the quiet wisdom that helps us navigate,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">09</span>
+                        <p>And Ayyan smiles remembering the joy you always bring,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">10</span>
+                        <p>Transforming ordinary days into a joyful spring.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">11</span>
+                        <p>Life has its winding roads and trials we must face,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">12</span>
+                        <p>But you walk through every challenge with such poise and grace.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">13</span>
+                        <p>Whenever shadows whisper or doubts begin to loom,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">14</span>
+                        <p>Remember you possess the power to make the darkest rooms bloom.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">15</span>
+                        <p>Your dreams are vast and breathtaking, painted in vibrant hue,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">16</span>
+                        <p>And we believe with all our souls in everything you do.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">17</span>
+                        <p>May success embrace your footsteps wherever you may roam,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">18</span>
+                        <p>And may your spirit always find a warm and loving home.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">19</span>
+                        <p>Through passing years and shifting tides, whatever may betide,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">20</span>
+                        <p>Know that three devoted cousins walk forever by your side.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">21</span>
+                        <p>Keep dreaming higher than the stars that glitter in the night,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">22</span>
+                        <p>For your potential shines so pure, so limitless, and bright.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">23</span>
+                        <p>Thank you for the endless warmth, the comfort, and the cheer,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">24</span>
+                        <p>For being such a precious soul we cherish far and near.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">25</span>
+                        <p>May happiness surround your days like petals in the breeze,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">26</span>
+                        <p>And every wish you hold dear unfold with effortless ease.</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">27</span>
+                        <p>We are endlessly proud of the remarkable woman you've become,</p>
+                    </div>
+                    <div class="verse-line p-3 rounded-xl bg-white/5 border border-white/5 flex gap-4 items-start">
+                        <span class="text-xs font-sans font-bold text-pink-400 mt-1.5">28</span>
+                        <p>Our dearest Ayesha, our shining star, our favorite one.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-pink-200/80">
+                    <span>Scroll to explore all verses</span>
+                    <span class="italic font-serif">Forever your brothers & cousins</span>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: Interactive Cousin Messages & Wish Generator -->
+            <div class="space-y-6">
+
+                <!-- Cousin Messages Card -->
+                <section class="glass-card rounded-3xl p-6 relative overflow-hidden">
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-white/10">
+                        <div class="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-300">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-lg text-white">Words from the Boys</h3>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div onclick="showCousinMessage('Ahmad', 'Ayesha, your intelligence and sharp advice always guide us when we need it most. Never change your incredible spirit!')" class="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-all flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-pink-500/30 flex items-center justify-center font-bold text-xs">A</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-pink-200">Ahmad's Note</h4>
+                                    <p class="text-[11px] text-slate-300">Click to read special message</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-pink-400"></i>
+                        </div>
+
+                        <div onclick="showCousinMessage('Aqeel', 'No matter how busy life gets, our childhood laughs remain my favorite memories. Stay blessed and keep shining!')" class="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-all flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-rose-500/30 flex items-center justify-center font-bold text-xs">Aq</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-pink-200">Aqeel's Note</h4>
+                                    <p class="text-[11px] text-slate-300">Click to read special message</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-pink-400"></i>
+                        </div>
+
+                        <div onclick="showCousinMessage('Ayyan', 'You are the coolest and kindest cousin anyone could ever ask for. Wishing you all the success in the universe!')" class="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 cursor-pointer transition-all flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-purple-500/30 flex items-center justify-center font-bold text-xs">Ay</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-pink-200">Ayyan's Note</h4>
+                                    <p class="text-[11px] text-slate-300">Click to read special message</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs text-pink-400"></i>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Wish Sparkle Generator -->
+                <section class="glass-card rounded-3xl p-6 text-center relative overflow-hidden">
+                    <div class="w-10 h-10 rounded-2xl bg-pink-500/20 text-pink-300 flex items-center justify-center mx-auto mb-3 border border-pink-500/30">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-white mb-2">Magical Cousin Wish</h3>
+                    <p id="wishText" class="font-serif italic text-sm text-pink-100 min-h-[50px] mb-4">"May every single dream in your heart blossom into reality."</p>
+                    <button onclick="generateNewWish()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold text-xs shadow-lg shadow-pink-600/30 transition-all">
+                        Generate Another Wish ✨
+                    </button>
+                </section>
+
+            </div>
+
+        </main>
+
+
+        <section class="promise-card rounded-3xl p-7 sm:p-10 mb-10 text-center relative overflow-hidden">
+            <div class="text-3xl mb-3" aria-hidden="true">🌷 ✨ 🌙</div>
+            <p class="text-xs uppercase tracking-[0.25em] text-pink-200/80 mb-3">A little promise from us</p>
+            <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">No matter where life takes us</h3>
+            <div class="soft-divider max-w-xs mx-auto mb-5"></div>
+            <p class="font-serif italic text-lg sm:text-xl text-pink-100 max-w-2xl mx-auto leading-relaxed">You will always have a place in our memories, a smile in our stories, and three cousins cheering for you in every new chapter.</p>
+            <p class="text-sm text-pink-200/80 mt-5">With love, always — Ahmad, Aqeel & Ayyan</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-white/10 text-xs text-pink-200/70">
+            <p>Made with infinite love and pride by <span class="font-semibold text-white">Ahmad, Aqeel & Ayyan</span> for <span class="font-semibold text-white">Ayesha</span>.</p>
+        </footer>
+
+    </div>
+
+    <!-- Modal for Cousin Messages -->
+    <div id="cousinModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 max-w-md w-full relative transform scale-95 transition-all duration-300" id="modalCard">
+            <button onclick="closeCousinModal()" class="absolute top-4 right-4 text-slate-300 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/20 text-pink-300 flex items-center justify-center mb-4 border border-pink-500/30">
+                <i class="fa-solid fa-envelope-open-text text-xl"></i>
+            </div>
+            <h3 id="modalTitle" class="font-serif font-bold text-2xl text-white mb-2">Message</h3>
+            <p id="modalBody" class="font-serif italic text-base text-pink-100 leading-relaxed mb-6"></p>
+            <button onclick="closeCousinModal()" class="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/25 text-white font-semibold text-xs transition-all border border-white/10">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- 1. MAGICAL PARTICLE & AURORA CANVAS BACKGROUND ---
+        const canvas = document.getElementById('magicalCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 140 };
+
+        let themeColors = {
+            bg: ['#0f0c1b', '#1e1335', '#2a1b4e'],
+            particle: 'rgba(244, 114, 182, 0.65)',
+            line: 'rgba(244, 114, 182, 0.2)',
+            aurora: ['rgba(236, 72, 153, 0.12)', 'rgba(168, 85, 247, 0.12)']
+        };
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1.0;
+                this.vy = (Math.random() - 0.5) * 1.0;
+                this.size = Math.random() * 2.5 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        let angle = Math.atan2(dy, dx);
+                        this.x -= Math.cos(angle) * 1.5;
+                        this.y -= Math.sin(angle) * 1.5;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = themeColors.particle;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(95, Math.floor((width * height) / (window.innerWidth < 640 ? 26000 : 16000)));
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        initParticles();
+
+        let time = 0;
+        function animateCanvas() {
+            time += 0.005;
+            ctx.clearRect(0, 0, width, height);
+
+            // Background gradient
+            const grad = ctx.createLinearGradient(0, 0, width, height);
+            grad.addColorStop(0, themeColors.bg[0]);
+            grad.addColorStop(0.5, themeColors.bg[1]);
+            grad.addColorStop(1, themeColors.bg[2]);
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Aurora waves
+            ctx.save();
+            ctx.globalCompositeOperation = 'screen';
+            for (let i = 0; i < 2; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, height * 0.5);
+                for (let x = 0; x < width; x += 60) {
+                    let y = height * 0.5 + Math.sin(x * 0.002 + time + i) * 140 + Math.cos(x * 0.003 - time * 0.5) * 80;
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(width, height);
+                ctx.lineTo(0, height);
+                ctx.closePath();
+                ctx.fillStyle = i === 0 ? themeColors.aurora[0] : themeColors.aurora[1];
+                ctx.fill();
+            }
+            ctx.restore();
+
+            // Particles and connection lines
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.strokeStyle = themeColors.line;
+                        ctx.lineWidth = (1 - dist / 120) * 1.2;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateCanvas);
+        }
+
+        animateCanvas();
+
+
+        // --- 2. THEME SWITCHER ---
+        function setTheme(theme) {
+            document.querySelectorAll('.theme-btn').forEach(b => {
+                b.className = 'theme-btn px-3 py-1.5 text-xs font-semibold rounded-xl transition-all text-pink-200 hover:text-white';
+            });
+            document.getElementById(`btn-${theme}`).className = 'theme-btn px-3 py-1.5 text-xs font-semibold rounded-xl transition-all bg-pink-600 text-white shadow-sm';
+
+            if (theme === 'midnight') {
+                themeColors = {
+                    bg: ['#0f0c1b', '#1e1335', '#2a1b4e'],
+                    particle: 'rgba(244, 114, 182, 0.65)',
+                    line: 'rgba(244, 114, 182, 0.2)',
+                    aurora: ['rgba(236, 72, 153, 0.12)', 'rgba(168, 85, 247, 0.12)']
+                };
+            } else if (theme === 'rosegold') {
+                themeColors = {
+                    bg: ['#2a1218', '#3b1a23', '#4d202b'],
+                    particle: 'rgba(251, 191, 36, 0.65)',
+                    line: 'rgba(251, 191, 36, 0.2)',
+                    aurora: ['rgba(244, 63, 94, 0.12)', 'rgba(251, 191, 36, 0.12)']
+                };
+            } else if (theme === 'emerald') {
+                themeColors = {
+                    bg: ['#061a14', '#0d2b22', '#143d30'],
+                    particle: 'rgba(52, 211, 153, 0.65)',
+                    line: 'rgba(52, 211, 153, 0.2)',
+                    aurora: ['rgba(16, 185, 129, 0.12)', 'rgba(52, 211, 153, 0.12)']
+                };
+            }
+            showToast(`Switched to ${theme.charAt(0).toUpperCase() + theme.slice(1)} theme`);
+        }
+
+
+        // --- 3. WEB AUDIO API AMBIENT MUSIC SYNTHESIZER ---
+        let audioCtx = null;
+        let masterGain = null;
+        let isAudioPlaying = false;
+        let ambientInterval = null;
+
+        function openGift() {
+            const overlay = document.getElementById('giftOverlay');
+            overlay.classList.add('is-open');
+            document.body.style.overflowX = 'hidden';
+            showToast('A little surprise, made with love 💖');
+        }
+
+        function previewAyeshaPhoto(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) { showToast('Please choose an image file.'); return; }
+            const reader = new FileReader();
+            reader.onload = () => {
+                const img = document.getElementById('ayeshaPhotoPreview');
+                img.src = reader.result;
+                img.classList.remove('hidden');
+                document.getElementById('photoPlaceholder').classList.add('hidden');
+                showToast('Photo added to your page 🌷');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function setMusicVolume(value) {
+            if (audioCtx && masterGain) masterGain.gain.setTargetAtTime(Number(value) / 100, audioCtx.currentTime, 0.08);
+        }
+
+        // Gentle falling petals; kept lightweight for phones.
+        function addPetals() {
+            const symbols = ['🌸', '🌷', '✿', '💮'];
+            for (let i = 0; i < 14; i++) {
+                const petal = document.createElement('span');
+                petal.className = 'petal';
+                petal.textContent = symbols[i % symbols.length];
+                petal.style.left = (Math.random() * 100) + 'vw';
+                petal.style.animationDuration = (12 + Math.random() * 15) + 's';
+                petal.style.animationDelay = (-Math.random() * 20) + 's';
+                petal.style.fontSize = (12 + Math.random() * 13) + 'px';
+                document.body.appendChild(petal);
+            }
+        }
+        addPetals();
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+                masterGain = audioCtx.createGain();
+                masterGain.gain.value = Number(document.getElementById('musicVolume').value) / 100;
+                masterGain.connect(audioCtx.destination);
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function toggleAmbientSound() {
+            initAudio();
+            isAudioPlaying = !isAudioPlaying;
+            const btn = document.getElementById('soundToggleBtn');
+            const icon = document.getElementById('soundIcon');
+            const text = document.getElementById('soundText');
+
+            if (isAudioPlaying) {
+                btn.className = 'flex items-center gap-2 px-4 py-2 rounded-2xl bg-pink-600 hover:bg-pink-500 text-xs font-semibold transition-all shadow-lg shadow-pink-900/40 text-white';
+                icon.className = 'fa-solid fa-volume-high';
+                text.textContent = 'Melody Playing';
+
+                // Play soothing pentatonic chords
+                const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
+                ambientInterval = setInterval(() => {
+                    if (!isAudioPlaying) return;
+                    const freq = notes[Math.floor(Math.random() * notes.length)];
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 3.0);
+
+                    osc.connect(gain);
+                    gain.connect(masterGain || audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 3.0);
+                }, 1400);
+
+                showToast('Ambient melody started ✨');
+            } else {
+                btn.className = 'flex items-center gap-2 px-4 py-2 rounded-2xl bg-pink-600/30 hover:bg-pink-600/50 border border-pink-400/30 text-xs font-semibold transition-all shadow-lg shadow-pink-900/20';
+                icon.className = 'fa-solid fa-music';
+                text.textContent = 'Play Melody';
+                if (ambientInterval) clearInterval(ambientInterval);
+                showToast('Ambient melody paused');
+            }
+        }
+
+
+        // --- 4. COUSIN MESSAGES MODAL ---
+        function showCousinMessage(cousinName, message) {
+            document.getElementById('modalTitle').textContent = `${cousinName}'s Special Note`;
+            document.getElementById('modalBody').textContent = `"${message}"`;
+            
+            const modal = document.getElementById('cousinModal');
+            const card = document.getElementById('modalCard');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-95');
+            card.classList.add('scale-100');
+        }
+
+        function closeCousinModal() {
+            const modal = document.getElementById('cousinModal');
+            const card = document.getElementById('modalCard');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+        }
+
+
+        // --- 5. WISH GENERATOR ---
+        const wishes = [
+            "May every single dream in your heart blossom into reality.",
+            "May your days be filled with endless smiles and bright sunshine.",
+            "May success and happiness walk hand in hand wherever you go.",
+            "May you always feel cherished, protected, and deeply loved by your family.",
+            "May your future be as magnificent and radiant as your beautiful spirit."
+        ];
+
+        function generateNewWish() {
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.getElementById('wishText').textContent = `"${randomWish}"`;
+            showToast('New magical wish generated ✨');
+        }
+
+
+        // --- 6. TOAST NOTIFICATION ---
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'glass-card bg-slate-900/90 text-white text-xs px-4 py-3 rounded-2xl shadow-2xl border border-pink-500/30 transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-auto flex items-center gap-2';
+            toast.innerHTML = `<i class="fa-solid fa-heart text-pink-400"></i> <span>${escapeHtml(message)}</span>`;
+            
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 420), { passive: true });
+        document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeCousinModal(); });
+    </script>
+</body>
+</html>
